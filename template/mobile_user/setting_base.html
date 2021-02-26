@@ -1,0 +1,63 @@
+
+<!--{include(pe_tpl('header.html'));}-->
+<div class="pagetop">
+	<div class="fh"><a href="user.php"></a></div>
+	<div>{$menutitle}</div>
+	<div class="cd"><a href="javascript:top_menu();"></a></div>
+	<!--{include(pe_tpl('top_menu.html'));}-->
+</div>
+<div class="main">
+	<form method="post" id="form">
+	<div class="zc_box2">
+		<div class="zc_list sk_box">
+			<a href="user.php?mod=setting&act=tname">
+				<span class="sk_name">真实姓名</span>
+				<div class="info_tt">{$info['user_tname']}</div>
+				<i></i>
+			</a>
+		</div>
+		<div class="zc_list sk_box">
+			<a href="user.php?mod=setting&act=phone">
+				<span class="sk_name">手机号码</span>
+				<div class="info_tt">{$info['user_phone']}</div>
+				<i></i>
+			</a>
+		</div>
+		<div class="zc_list sk_box">
+			<a href="user.php?mod=setting&act=email">
+				<span class="sk_name">电子邮箱</span>
+				<div class="info_tt">{$info['user_email']}</div>
+				<i></i>
+			</a>
+		</div>
+		<div class="zc_list sk_box">
+			<a href="user.php?mod=setting&act=pw">
+				<span class="sk_name">登录密码</span>
+				<div class="info_tt">修改</div>
+				<i></i>
+			</a>
+		</div>
+		<div class="zc_list sk_box">
+			<a href="user.php?mod=setting&act=paypw">
+				<span class="sk_name">支付密码</span>
+				<div class="info_tt">修改</div>
+				<i></i>
+			</a>
+		</div>
+	</div>
+	</form>
+</div>
+<div class="fb_btn1"><a href="javascript:user_logout();">退出当前账户</a></div>
+<script type="text/javascript">
+function user_logout() {
+	app_getinfo('user.php?mod=do&act=logout', function(json){
+		if (json.result) {
+			app_open('user.php', 1000);
+		}
+	});
+}
+</script>
+<style type="text/css">
+.info_tt{ text-align:right}
+</style>
+<!--{include(pe_tpl('footer.html'));}-->

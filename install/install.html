@@ -1,0 +1,162 @@
+<!--
+<?php
+print<<<html
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo['title']}</title>
+<meta name="keywords" content="{$seo['keywords']}" />
+<meta name="description" content="{$seo['description']}" />
+<link type="text/css" rel="stylesheet" href="{$pe['host_root']}install/css/style.css" />
+<script type="text/javascript" src="{$pe['host_root']}public/js/jquery.js"></script>
+<script type="text/javascript" src="{$pe['host_root']}public/js/global.js"></script>
+</head>
+<body>
+<div class="content">
+	<div class="logo">安装向导</div>
+	
+<!--
+html;
+if(!$_g_step){
+print<<<html
+-->
+
+	<div class="main_m" style="padding-bottom:30px; height:auto">
+		
+		<form method="post">
+		<div class="xieyi" style="margin-top:10px; border:0; background:none; padding:0">
+			<div class="corg strong">①环境要求</div>
+			<table width="100%" border="1" cellspacing="0" cellpadding="0" class="mat10">
+			<tr>
+				<td>逍遥商城系统对服务器环境没有特殊要求，但必须满足以下基础安装条件</td>
+			</tr>
+			<tr>
+				<td>检查./data及其子目录<span class="num cblue">777</span>权限：{$mod_data}</td>
+			</tr>
+			<tr>
+				<td>检查./install目录<span class="num cblue">777</span>权限：{$mod_install}</td>
+			</tr>
+			<tr>
+				<td>检查./config.php文件<span class="num cblue">777</span>权限：{$mod_config}</td>
+			</tr>
+			</table>
+			<div class="corg strong mat10">②数据库配置</div>
+			<table width="100%" border="1" cellspacing="0" cellpadding="0" class="mat10">
+			<tr>
+				<td align="right" width="100">数据库服务器</td>
+				<td>
+					<input type="text" name="db_host" value="127.0.0.1" class="input200" />
+					端口 <input type="text" name="db_port" value="3306" class="input50" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">数据库用户名</td>
+				<td>
+					<input type="text" name="db_user" class="input200" />
+					密码 <input type="text" name="db_pw" class="input150" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">数据库名称</td>
+				<td><input type="text" name="db_name" class="input200" /></td>
+			</tr>
+			<tr>
+				<td align="right">数据表前缀</td>
+				<td><input type="text" name="dbpre" value="xy_" class="input200" /> <span class="c888">默认是 "xy_"</span></td>
+			</tr>
+			</table>
+			<div class="corg strong mat10">③管理员帐号</div>
+			<table width="100%" border="1" cellspacing="0" cellpadding="0" class="mat10">
+			<tr>
+				<td align="right" width="100" >管理帐号</td>
+				<td><input type="text" name="admin_name" class="input200" /> <span class="c888">网站管理员登录帐号</span></td>
+			</tr>
+			<tr>
+				<td align="right">管理密码</td>
+				<td><input type="text" name="admin_pw" class="input200" /> <span class="c888">网站管理员登录密码</span></td>
+			</tr>
+			</table>
+		</div>
+		<div class="mat20 center">
+			<input type="hidden" name="pesubmit" />
+			<input type="button" value=" 开始安装 ..." class="btn" />
+		</div>
+		</form>
+	</div>
+	<div class="clear"></div>
+<script type="text/javascript">
+$(function(){
+$(":button").click(function(){
+	if(!$mod_data_result) {
+		alert('请检查./data目录及其子目录是否有777权限...');
+		return;
+	}
+	if(!$mod_install_result) {
+		alert('请检查./install目录是否有777权限...');
+		return;
+	}
+	if(!$mod_config_result) {
+		alert('请检查./config.php文件是否有777权限...');
+		return;
+	}
+	if(!$(":input[name='db_host']").val()) {
+		alert('数据库服务器必须填写...');
+		return;
+	}
+	if(!$(":input[name='db_port']").val()) {
+		alert('端口必须填写...');
+		return;
+	}
+	if(!$(":input[name='db_user']").val()) {
+		alert('数据库用户名必须填写...');
+		return;
+	}
+	/*if(!$(":input[name='db_pw']").val()) {
+		alert('数据库密码必须填写...');
+		return;
+	}*/
+	if(!$(":input[name='db_name']").val()) {
+		alert('数据库名必须填写...');
+		return;
+	}
+	if(!$(":input[name='admin_name']").val()) {
+		alert('管理帐号必须填写...');
+		return;
+	}
+	if(!$(":input[name='admin_pw']").val()) {
+		alert('管理密码必须填写...');
+		return;
+	}
+	$("form").submit();
+})
+})
+</script>
+<!--
+html;
+}elseif($_g_step=='success') {
+print<<<html
+-->
+	<div class="main" style="padding-bottom:0">
+		<div class="cg_ts">
+			恭喜！逍遥商城系统安装成功。
+			<p class="corg font12 mat5">为保证网站数据安全，请立即删除./install目录</p>
+		</div>
+		<div class="demo_btn01"><a href="{$pe['host_root']}" target="_blank" title="前台地址">前台地址</a></div>
+		<div class="demo_btn02"><a href="{$pe['host_root']}admin/webadmin.php" target="_blank" title="管理后台">管理后台</a></div>
+
+	</div>
+<!--
+html;
+}
+print<<<html
+-->
+	<div class="center mat20 c888">Copyright <span class="num">©</span> 2015-2019 <a class="c888" href="http://www.qiye1000.com" target="_blank" title="逍遥商城系统">逍遥商城系统</a> </div>
+</div>
+</body>
+</html>
+<!--
+html;
+?>
+-->

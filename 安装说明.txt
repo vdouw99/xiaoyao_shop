@@ -1,0 +1,5 @@
+安装步骤：
+1.逍遥商城系统需要PHP+mysql运行环境，可以在windows或linux下运行，具体的php和mysql的版本没有特殊要求，兼容范围还是比较广的，推荐php5.6以上，mysql5.0以上。
+2.把文件夹所有文件解压缩在站点目录中，
+2.执行http://127.0.0.1/install/index.php进行安装
+3.安装完成后，把install目录删掉。
